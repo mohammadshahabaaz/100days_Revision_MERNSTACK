@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import userRouter from './routes/userRoutes';
 
 const app = express();
 const PORT = 4000;
@@ -20,13 +21,15 @@ app.get("/user", (req: Request, res: Response) => {
     });
 });
 
+
 app.get("/products", (req: Request, res: Response) => {
-    // res.send("Working")
     const data =
         [{ id: 1, name: "Laptop" }, { id: 2, name: "Phone" }]
 
     res.json(data)
 })
+
+app.use("/users", userRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on the PORT ${PORT}`)
