@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { fetchUsers, profileUsers } from "../controller/userController";
+import { addUser, fetchUsers, getUserByApplicationId } from "../controller/userController";
 
 const router = Router();
 
 router.get("/all", fetchUsers);
-router.get("/profile", profileUsers)
+router.post("/add", addUser)
+router.get("/:id", getUserByApplicationId)
 
 export default router;

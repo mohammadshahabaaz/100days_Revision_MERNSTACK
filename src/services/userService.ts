@@ -3,37 +3,31 @@ export interface User {
     name: string,
     role: string,
     city: string,
+    email: string
 }
 
+let users: User[] = [
+    {
+        id: 1,
+        name: "Shahbaaz",
+        role: "Future SDE-3",
+        city: "Bangalore",
+        email: "R@GMail.com"
+    }
+]
+
 export const getUsers = (): User[] => {
-    return [
-        {
-            id: 1,
-            name: "Shahabaaz",
-            role: "SDE-3",
-            city: "Bangalore"
-        },
-        {
-            id: 2,
-            name: "Shammi",
-            role: "SDE-2",
-            city: "USA"
-        },
-        {
-            id: 3,
-            name: "Sana",
-            role: "Founder",
-            city: "Hyderabad"
-        }
-    ];
+    return users;
 };
-export const getProfile = (): User[] => {
-    return [
-        {
-            id: 1,
-            name: "Shahabaaz",
-            role: "SDE-3",
-            city: "Bangalore"
-        }
-    ]
+export const getUserById = (id: number) => {
+    const user = users.find((user) => user.id === id);
+    return user
+}
+export const createUser = (user: Omit<User, "id">): User => {
+    const newUser: User = {
+        id: users.length + 1,
+        ...user
+    };
+    users.push(newUser);
+    return newUser
 }

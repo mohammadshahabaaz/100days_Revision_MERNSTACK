@@ -4,4 +4,6 @@ const express_1 = require("express");
 const userController_1 = require("../controller/userController");
 const router = (0, express_1.Router)();
 router.get("/all", userController_1.fetchUsers);
+router.post("/add", userController_1.addUser);
+router.get("/:id", userController_1.getUserByApplicationId);
 exports.default = router;

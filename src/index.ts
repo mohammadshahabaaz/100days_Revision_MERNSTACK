@@ -4,6 +4,8 @@ import userRouter from './routes/userRoutes';
 const app = express();
 const PORT = 4000;
 
+app.use(express.json());
+
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello World from TypeScript backend");
 });
