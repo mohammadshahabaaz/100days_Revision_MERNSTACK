@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 
-export const successResponse = (res: Response, message: string, data: any) => {
+export const successResponseHandler = (res: Response, message: string, data: any) => {
     return res.status(200).json({
         success: true,
         message,
@@ -9,7 +9,7 @@ export const successResponse = (res: Response, message: string, data: any) => {
     })
 }
 
-export const errorResponse = (res: Response, message: string) => {
+export const errorResponseHandler = (res: Response, message: string) => {
     return res.status(500).json({
         success: false,
         message

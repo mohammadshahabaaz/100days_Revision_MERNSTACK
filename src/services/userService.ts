@@ -4,6 +4,7 @@ export interface User {
     role: string;
     city: string;
     email: string;
+    password: string
 }
 
 let users: User[] = [
@@ -12,7 +13,8 @@ let users: User[] = [
         name: "Shahbaaz",
         role: "Future SDE-3",
         city: "Bangalore",
-        email: "R@GMail.com"
+        email: "R@GMail.com",
+        password: "password"
     }
 ]
 
