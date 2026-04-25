@@ -11,7 +11,7 @@ export const validateUser = (data: any): { valid: boolean, message?: string } =>
         return { valid: false, message: "Password is required and must be at least 8 characters long" };
     }
     if (!data.role || !["admin", "Developer"].includes(data.role)) {
-        return { valid: false, message: "Role is required and must be either admin or Developer" };
+        data.role = "User"
     }
     if (!data.city) {
         return { valid: false, message: "City is required" };
