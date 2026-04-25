@@ -1,9 +1,9 @@
 export interface User {
-    id: number,
-    name: string,
-    role: string,
-    city: string,
-    email: string
+    id: number;
+    name: string;
+    role: string;
+    city: string;
+    email: string;
 }
 
 let users: User[] = [
