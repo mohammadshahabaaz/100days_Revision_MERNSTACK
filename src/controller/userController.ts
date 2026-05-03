@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUsers, createUser, getUserById, deleteUser } from "../services/userService";
+import { getUsers, createUser, getUserById, deleteUser, updateUser } from "../services/userService";
 import { errorResponseHandler, successResponseHandler } from "../utils/responseHandler";
 import { validateUser } from "../utils/validateUser";
 import { errorHandler } from "../middleware/errorHandler";
@@ -35,8 +35,15 @@ export const getUserByApplicationId = async (req: Request, res: Response) => {
     const user = await getUserById(id);
     successResponseHandler(res, `Found the User with ${user?.id}`, user)
 }
-export const deleteUserById = async (req: Request, res: Response) => {
+export const updateUserById = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
-    const deletedUser = await deleteUser(id)
+    const { name, role, city, email } = req.body;
+    const updated = await updateUser(id, { name, role, city, email });
+    successResponseHandler(res, "User Updated Successfully", updated);
+}
+
+export const deleteUserById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const deletedUser = await deleteUser(Number(id))
     successResponseHandler(res, "Deleted Successfully", deletedUser)
 }

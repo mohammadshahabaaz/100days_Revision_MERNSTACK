@@ -51,3 +51,7 @@ export const createUser = async (user: {
 export const deleteUser = async (id: number) => {
     return await UserModel.deleteOne({ id })
 }
+
+export const updateUser = async (id: number, updates: Partial<Pick<IUser, "name" | "role" | "city" | "email">>) => {
+    return await UserModel.findOneAndUpdate({ id }, updates, { new: true });
+}
