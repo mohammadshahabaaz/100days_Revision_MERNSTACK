@@ -3,6 +3,7 @@ import { addUser, deleteUserById, fetchUsers, getUserByApplicationId } from "../
 
 const router = Router();
 
+router.get("/", fetchUsers);
 router.get("/all", fetchUsers);
 router.post("/add", addUser)
 router.get("/:id", getUserByApplicationId)

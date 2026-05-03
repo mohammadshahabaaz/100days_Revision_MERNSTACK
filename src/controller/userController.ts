@@ -6,14 +6,20 @@ import { errorHandler } from "../middleware/errorHandler";
 import { CreateUserDTO } from "../dto/createUserDTO";
 
 export const fetchUsers = async (req: Request, res: Response) => {
-    const users = await getUsers();
-    console.log("Controller data", users)
+    const { city, role, page, limit, sortBy, order } = req.query;
+    const users = await getUsers({
+        city: city as string,
+        role: role as string,
+        page: page ? Number(page) : undefined,
+        limit: limit ? Number(limit) : undefined,
+        sortBy: sortBy as string,
+        order: order as "asc" | "desc",
+    });
     successResponseHandler(res, "Successfully Fetched", users)
 };
 
 export const addUser = async (req: Request, res: Response) => {
     const validation = validateUser(req.body)
-    console.log(validation)
 
     if (!validation.valid) {
         errorResponseHandler(res, validation.message || "Internal Server Error")
